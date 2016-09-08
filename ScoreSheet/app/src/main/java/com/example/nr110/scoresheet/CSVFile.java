@@ -1,6 +1,9 @@
 package com.example.nr110.scoresheet;
 
+import android.app.Activity;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,16 +12,28 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVFile {
-    InputStream inputStream;
+public class CSVFile extends Activity{
 
+    private InputStream inputStream;
+   /* private TextView name,score;
+    private View left,right;
+    */
     public CSVFile(InputStream inputStream){
 
         this.inputStream = inputStream;
+
+
     }
 
     public List<String[]> read(){
         //int idx = 0;
+        //setContentView(R.layout.item_layout);
+  /*      name = (TextView)findViewById(R.id.name);
+        score = (TextView)findViewById(R.id.score);
+
+        left = (View)findViewById(R.id.left_1);
+        right = (View)findViewById(R.id.right_1);
+ */
         List<String[]> resultList = new ArrayList<String[]>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         int point,now_a = 1,now_b = 1,sum;
@@ -38,6 +53,12 @@ public class CSVFile {
                         break;
                 }
                 if(row[0].equals("0")){
+                    /*left.setBackgroundColor(0xffc0cb);
+                    name.setBackgroundColor(0xffc0cb);
+
+                    right.setBackgroundColor(0x98fb98);
+                    score.setBackgroundColor(0x98fb98);
+                    */
                     sum = now_a+point-1;
                     while(now_a < sum){
 
@@ -49,6 +70,13 @@ public class CSVFile {
                     row[2] = mark + now_a;
                     now_a++;
                 }else {
+                    /*
+                    left.setBackgroundColor(0x98fb98);
+                    name.setBackgroundColor(0x98fb98);
+
+                    right.setBackgroundColor(0xffc0cb);
+                    score.setBackgroundColor(0xffc0cb);
+                    */
                     sum = now_b + point-1;
                     while(now_b < sum){
 

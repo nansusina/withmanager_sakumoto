@@ -9,7 +9,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.6"
+        android:layout_weight="0.598"
         />
 
     <ListView
@@ -18,13 +18,24 @@
         android:layout_weight="0.2"
         android:layout_gravity="right"
         android:id="@+id/listView_a"
+        android:divider = "#000000"
+        android:dividerHeight="2sp"
+
 
          />
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.002"
+        android:background="#000000"
+        />
     <ListView
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_weight="0.2"
         android:layout_gravity="left"
         android:id="@+id/listView_b"
+        android:divider = "#000000"
+        android:dividerHeight="2sp"
          />
 </LinearLayout>

@@ -13,11 +13,13 @@ import java.util.List;
 
 public class ItemArrayAdapter extends ArrayAdapter {
     private List<String[]> scoreList = new ArrayList<String[]>();
-    String[] data = new String[2];
+
 
     static class ItemViewHolder {
         TextView name;
         TextView score;
+        View left;
+        View right;
     }
 
     public ItemArrayAdapter(Context context, int textViewResourceId) {
@@ -64,16 +66,34 @@ public class ItemArrayAdapter extends ArrayAdapter {
             viewHolder = new ItemViewHolder();
             viewHolder.name = (TextView) row.findViewById(R.id.name);
             viewHolder.score = (TextView) row.findViewById(R.id.score);
+            viewHolder.left = (View)row.findViewById(R.id.left_1);
+            viewHolder.right = (View)row.findViewById(R.id.right_1);
             row.setTag(viewHolder);
         } else {
             viewHolder = (ItemViewHolder)row.getTag();
         }
         String[] stat = getItem(position);
+        if(stat[0].equals("0")){
+            viewHolder.left.setBackgroundColor(Color.parseColor("#ffc0cb"));
+            viewHolder.name.setBackgroundColor(Color.parseColor("#ffc0cb"));
 
-        viewHolder.name.setText(stat[0]);
+            viewHolder.right.setBackgroundColor(Color.parseColor("#98fb98"));
+            viewHolder.score.setBackgroundColor(Color.parseColor("#98fb98"));
+
+        }
+        else{
+
+            viewHolder.right.setBackgroundColor(Color.parseColor("#ffc0cb"));
+            viewHolder.score.setBackgroundColor(Color.parseColor("#ffc0cb"));
+
+            viewHolder.left.setBackgroundColor(Color.parseColor("#98fb98"));
+            viewHolder.name.setBackgroundColor(Color.parseColor("#98fb98"));
+
+        }
+        viewHolder.name.setText(stat[1]);
         viewHolder.name.setTextColor(Color.BLACK);
 
-        viewHolder.score.setText(stat[1]);
+        viewHolder.score.setText(stat[2]);
         viewHolder.score.setTextColor(Color.BLACK);
 
         return row;

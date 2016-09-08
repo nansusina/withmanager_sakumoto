@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import java.io.InputStream;
 import java.util.List;
 
@@ -14,7 +16,7 @@ import java.util.List;
 public class MainActivity extends Activity {
     private ListView listView_a,listView_b;
     private ItemArrayAdapter adpt_a,adpt_b;
-    private int oldpnt_a,oldpnt_b;
+
 
 
     @Override
@@ -25,8 +27,7 @@ public class MainActivity extends Activity {
         listView_a = (ListView) findViewById(R.id.listView_a);
         listView_b = (ListView)findViewById(R.id.listView_b);
 
-        oldpnt_a = 0;
-        oldpnt_b = 0;
+
 
         adpt_a = new ItemArrayAdapter(getApplicationContext(), R.layout.item_layout);
         adpt_b = new ItemArrayAdapter(getApplicationContext(), R.layout.item_layout);
@@ -37,28 +38,35 @@ public class MainActivity extends Activity {
         listView_a.setAdapter(adpt_a);
         listView_b.setAdapter(adpt_b);
 
+
         listView_a.onRestoreInstanceState(state_a);
         listView_b.onRestoreInstanceState(state_b);
+
 
         InputStream st = getResources().openRawResource(R.raw.scorelog);
         CSVFile csvFile = new CSVFile(st);
         List<String[]> scList = csvFile.read();
 
         for(String[] scData:scList) {
+            /*
             String[] data = new String[2];
             data[0] = scData[1];
-            data[1] = scData[2];
+            data[1] = scData[2];*/
             //int N = Integer.parseInt(scData[0]);
             //Log.d("",scData[0]);
             if(scData[0].equals("0")) {
+               // listView_a.setBackgroundColor(0xffc0cb);
+                //listView_b.setBackgroundColor(0x98fb98);
 
-                adpt_a.add(data);
+                adpt_a.add(scData);
             }else{
-                String temp = data[0];
-                data[0] = data[1];
-                data[1] = temp;
+                //listView_b.setBackgroundColor(0xffc0cb);
+                //listView_a.setBackgroundColor(0x98fb98);
+                String temp = scData[1];
+                scData[1] = scData[2];
+                scData[2] = temp;
 
-                adpt_b.add(data);
+                adpt_b.add(scData);
             }
 
         }
