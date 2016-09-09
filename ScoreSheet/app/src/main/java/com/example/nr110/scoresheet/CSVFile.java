@@ -26,14 +26,6 @@ public class CSVFile extends Activity{
     }
 
     public List<String[]> read(){
-        //int idx = 0;
-        //setContentView(R.layout.item_layout);
-  /*      name = (TextView)findViewById(R.id.name);
-        score = (TextView)findViewById(R.id.score);
-
-        left = (View)findViewById(R.id.left_1);
-        right = (View)findViewById(R.id.right_1);
- */
         List<String[]> resultList = new ArrayList<String[]>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         int point,now_a = 1,now_b = 1,sum;
@@ -53,37 +45,22 @@ public class CSVFile extends Activity{
                         break;
                 }
                 if(row[0].equals("0")){
-                    /*left.setBackgroundColor(0xffc0cb);
-                    name.setBackgroundColor(0xffc0cb);
-
-                    right.setBackgroundColor(0x98fb98);
-                    score.setBackgroundColor(0x98fb98);
-                    */
                     sum = now_a+point-1;
                     while(now_a < sum){
 
                         String[] obj = {"0","","" + now_a};
                         resultList.add(obj);
                         now_a++;
-                        //Log.d("a",""+(++idx));
                     }
                     row[2] = mark + now_a;
                     now_a++;
                 }else {
-                    /*
-                    left.setBackgroundColor(0x98fb98);
-                    name.setBackgroundColor(0x98fb98);
-
-                    right.setBackgroundColor(0xffc0cb);
-                    score.setBackgroundColor(0xffc0cb);
-                    */
                     sum = now_b + point-1;
                     while(now_b < sum){
 
                         String[] obj = {"1", "", "" + now_b};
                         resultList.add(obj);
                         now_b++;
-                        //Log.d("b",""+(++idx));
                     }
                     row[2] = now_b + mark;
                     now_b++;

@@ -14,7 +14,6 @@ import java.util.List;
 public class ItemArrayAdapter extends ArrayAdapter {
     private List<String[]> scoreList = new ArrayList<String[]>();
 
-
     static class ItemViewHolder {
         TextView name;
         TextView score;
@@ -28,22 +27,9 @@ public class ItemArrayAdapter extends ArrayAdapter {
 
     //@Override
     public void add(String[] object) {
-        //if(object[0].equals(""))
-           // Log.d("aaa",object[0] + " " + object[1]);
         scoreList.add(object);
         super.add(object);
     }
-
-   /* public void addnull(int oldpnt,int point){
-        for(int i = oldpnt+1; i < oldpnt+point; i++) {
-            data[0] = "";
-            data[1] = "" + i;
-            //Log.d("bbb",data[0] + " " + data[1]);
-            //Log.d("ccc",data[1]);
-            add(data);
-        }
-    }
-*/
 
     @Override
     public int getCount() {
@@ -66,8 +52,8 @@ public class ItemArrayAdapter extends ArrayAdapter {
             viewHolder = new ItemViewHolder();
             viewHolder.name = (TextView) row.findViewById(R.id.name);
             viewHolder.score = (TextView) row.findViewById(R.id.score);
-            viewHolder.left = (View)row.findViewById(R.id.left_1);
-            viewHolder.right = (View)row.findViewById(R.id.right_1);
+            viewHolder.left = row.findViewById(R.id.left_1);
+            viewHolder.right = row.findViewById(R.id.right_1);
             row.setTag(viewHolder);
         } else {
             viewHolder = (ItemViewHolder)row.getTag();

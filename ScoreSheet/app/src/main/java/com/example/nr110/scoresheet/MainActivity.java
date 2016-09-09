@@ -48,20 +48,10 @@ public class MainActivity extends Activity {
         List<String[]> scList = csvFile.read();
 
         for(String[] scData:scList) {
-            /*
-            String[] data = new String[2];
-            data[0] = scData[1];
-            data[1] = scData[2];*/
-            //int N = Integer.parseInt(scData[0]);
-            //Log.d("",scData[0]);
-            if(scData[0].equals("0")) {
-               // listView_a.setBackgroundColor(0xffc0cb);
-                //listView_b.setBackgroundColor(0x98fb98);
 
+            if(scData[0].equals("0")) {
                 adpt_a.add(scData);
             }else{
-                //listView_b.setBackgroundColor(0xffc0cb);
-                //listView_a.setBackgroundColor(0x98fb98);
                 String temp = scData[1];
                 scData[1] = scData[2];
                 scData[2] = temp;
